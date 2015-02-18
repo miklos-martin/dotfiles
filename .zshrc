@@ -39,6 +39,9 @@ alias clipboard="xclip -selection clipboard"
 alias svnst="svn st | egrep -v '^Perf|X|!' | egrep --color=never '\w'"
 alias fuck="sudo $(tail -n1 $HISTFILE | cut -d ";" -f 2)"
 
+##
+# Fuzzy
+##
 if [ -f ~/.fzf.zsh ];then
    source ~/.fzf.zsh
    source ~/dotfiles/functions/fuzzy.zsh
