@@ -22,7 +22,7 @@ COMPLETION_WAITING_DOTS="true"
 SAMBA_DEFAULT_USERNAME="martin.miklos"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
-plugins=(git svn debian symfony2 node nginx php-fpm lesscss zsh-syntax-highlighting bower memcached samba docker)
+plugins=(fuzzy git svn debian symfony2 node nginx php-fpm lesscss zsh-syntax-highlighting bower memcached samba docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -44,7 +44,6 @@ alias fuck="sudo $(tail -n1 $HISTFILE | cut -d ";" -f 2)"
 ##
 if [ -f ~/.fzf.zsh ];then
    source ~/.fzf.zsh
-   source ~/dotfiles/functions/fuzzy.zsh
 fi
 
 ##
