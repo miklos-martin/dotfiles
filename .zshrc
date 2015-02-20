@@ -46,3 +46,8 @@ if [ -f ~/.fzf.zsh ];then
    source ~/.fzf.zsh
    source ~/dotfiles/functions/fuzzy.zsh
 fi
+
+##
+# Other utility stuff
+##
+source ~/dotfiles/functions/projects.zsh
