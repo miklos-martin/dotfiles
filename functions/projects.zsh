@@ -1,3 +1,5 @@
+#!/bin/zsh
+
 : ${PROJECTS_DIR:=/projects}
 
 unknown_project () {
