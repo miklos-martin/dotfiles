@@ -1,10 +1,7 @@
 ##
 # Env
 ##
-export JAVA_HOME=/opt/java/jdk1.8.0_25
-export JDK_HOME=/usr/lib/jvm/java-7-oracle
-export ANDROID_HOME=$HOME/Programs/android-studio/sdk
-export CATALINA_HOME=/usr/share/tomcat7
+export JAVA_HOME=/usr
 export SCALA_HOME=/usr/local/share/scala
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer
 export EDITOR=vim
