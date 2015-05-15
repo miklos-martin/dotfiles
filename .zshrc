@@ -37,6 +37,7 @@ alias svnst="svn st | egrep -v '^Perf|X|!' | egrep --color=never '\w'"
 alias fuck="sudo $(tail -n1 $HISTFILE | cut -d ";" -f 2)"
 alias dmd="docker run --rm -v $PWD:/app miklosmartin/compiled -de -w -unittest"
 alias html="lynx -stdin"
+alias docs="sudo /etc/init.d/docker start"
 
 ##
 # Fuzzy
