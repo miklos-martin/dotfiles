@@ -1,7 +1,7 @@
 ##
 # Env
 ##
-export JAVA_HOME=/usr
+export JAVA_HOME=/usr/share/java
 export SCALA_HOME=/usr/local/share/scala
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer
 export EDITOR=vim
