@@ -19,7 +19,7 @@ COMPLETION_WAITING_DOTS="true"
 SAMBA_DEFAULT_USERNAME="martin.miklos"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 
-plugins=(fuzzy git svn debian symfony2 node nginx php-fpm lesscss zsh-syntax-highlighting bower memcached samba docker)
+plugins=(fuzzy git svn debian symfony2 node nginx php-fpm lesscss bower memcached samba docker jump)
 
 source $ZSH/oh-my-zsh.sh
 
