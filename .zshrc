@@ -6,6 +6,7 @@ export SCALA_HOME=/usr/local/share/scala
 export PATH=$HOME/anaconda2/bin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer
 export EDITOR=vim
 export SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M  -Duser.timezone=GMT"
+export TERM=xterm-256color
 
 ##
 # oh my zsh
@@ -19,8 +20,9 @@ COMPLETION_WAITING_DOTS="true"
 ##
 SAMBA_DEFAULT_USERNAME="martin.miklos"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
+ZSH_TMUX_AUTOSTART=true
 
-plugins=(fuzzy git svn debian node memcached samba docker jump)
+plugins=(fuzzy git svn debian memcached samba docker jump scala sbt tmux)
 
 source $ZSH/oh-my-zsh.sh
 
