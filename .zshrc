@@ -3,14 +3,14 @@
 ##
 export JAVA_HOME=/usr/share/java
 export SCALA_HOME=/usr/local/share/scala
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer
+export PATH=$HOME/anaconda2/bin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer
 export EDITOR=vim
 
 ##
 # oh my zsh
 ##
 ZSH=$HOME/.oh-my-zsh
-ZSH_THEME="mikka"
+ZSH_THEME="agnoster"
 COMPLETION_WAITING_DOTS="true"
 
 ##
@@ -34,10 +34,12 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 alias zshconfig="vim ~/.zshrc"
 alias clipboard="xclip -selection clipboard"
 alias svnst="svn st | egrep -v '^Perf|X|!' | egrep --color=never '\w'"
-alias fuck="sudo $(tail -n1 $HISTFILE | cut -d ";" -f 2)"
+alias fuck='sudo $(fc -ln -1)'
 alias dmd="docker run --rm -v $PWD:/app miklosmartin/compiled -de -w -unittest"
 alias html="lynx -stdin"
-alias docs="sudo /etc/init.d/docker start"
+alias docs="/etc/init.d/docker status > /dev/null || sudo /etc/init.d/docker start"
+alias REPLesent='scala -Dscala.color -language:_ -nowarn -i ~/.replesent/REPLesent.scala'
+
 
 ##
 # Fuzzy
