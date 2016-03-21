@@ -42,6 +42,7 @@ alias dmd="docker run --rm -v $PWD:/app miklosmartin/compiled -de -w -unittest"
 alias html="lynx -stdin"
 alias docs="/etc/init.d/docker status > /dev/null || sudo /etc/init.d/docker start"
 alias REPLesent='scala -Dscala.color -language:_ -nowarn -i ~/.replesent/REPLesent.scala'
+alias vpnon='sudo openvpn /etc/openvpn/client.conf'
 
 
 ##
