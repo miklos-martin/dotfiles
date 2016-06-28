@@ -1,7 +1,7 @@
 ##
 # Env
 ##
-export PATH=$HOME/anaconda2/bin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer:$$HOME/.rvm/bin:PATH
+export PATH=$HOME/.composer/vendor/bin:$HOME/anaconda2/bin:$HOME/bin:/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$ANDROID_HOME/platform-tools:/usr/local/heroku/bin:$SCALA_HOME/bin:/usr/local/packer:$$HOME/.rvm/bin:PATH
 export EDITOR=vim
 export SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -Xss2M  -Duser.timezone=GMT"
 
@@ -37,6 +37,7 @@ alias svnst="svn st | egrep -v '^Perf|X|!' | egrep --color=never '\w'"
 alias fuck='sudo $(fc -ln -1)'
 alias dmd="docker run --rm -v $PWD:/app miklosmartin/compiled -de -w -unittest"
 alias html="lynx -stdin"
+alias ~phpunit="echo 'watch | phpunit' && (fswatch  -or ./ | xargs -n1 -I {} vendor/bin/phpunit -c .)"
 
 if [[ `uname` -eq "Darwin" ]]; then
     alias docs="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
