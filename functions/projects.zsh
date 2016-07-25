@@ -16,11 +16,7 @@ p() {
 }
 
 p_comp() {
-  compadd `p_list`
-}
-
-p_list() {
-  ls $PROJECTS_DIR
+    _alternative "dirs:project dirs:_path_files -W ${PROJECTS_DIR}"
 }
 
 compdef p_comp p
