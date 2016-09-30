@@ -38,6 +38,7 @@ alias svnst="svn st | egrep -v '^Perf|X|!' | egrep --color=never '\w'"
 alias fuck='sudo $(fc -ln -1)'
 alias dmd="docker run --rm -v $PWD:/app miklosmartin/compiled -de -w -unittest"
 alias html="lynx -stdin"
+alias json="jq -C '.' | less -R"
 alias ~phpunit="echo 'watch | phpunit' && (fswatch  -or ./ | xargs -n1 -I {} vendor/bin/phpunit -c .)"
 
 if [[ `uname` -eq "Darwin" ]]; then
