@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: @ORM\Column
+# key: orm
+# --
+/**
+ * @ORM\Column(type="$0")
+ */

@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: use token 
+# key: utok
+# --
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;

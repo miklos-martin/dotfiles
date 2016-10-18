@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: token
+# key: tok
+# --
+TokenInterface $token = null

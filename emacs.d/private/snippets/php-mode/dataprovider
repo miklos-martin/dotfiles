@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: @dataProvider 
+# key: dp
+# --
+/**
+ * @dataProvider $0
+ */

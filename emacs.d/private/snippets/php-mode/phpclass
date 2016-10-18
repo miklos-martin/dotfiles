@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+# name: phpclass 
+# key: pc
+# --
+<?php
+
+namespace ${1:namespace};
+
+class ${2:`(file-name-base (buffer-file-name))`}
+{
+    $0
+}
