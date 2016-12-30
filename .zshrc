@@ -11,6 +11,7 @@ COMPLETION_WAITING_DOTS="true"
 SAMBA_DEFAULT_USERNAME="martin.miklos"
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern cursor)
 ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_AUTOQUIT=false
 
 plugins=(fuzzy git svn debian memcached samba docker jump scala sbt tmux)
 
@@ -32,6 +33,7 @@ alias dmd="docker run --rm -v $PWD:/app miklosmartin/compiled -de -w -unittest"
 alias html="lynx -stdin"
 alias json="jq -C '.' | less -R"
 alias ~phpunit="echo 'watch | phpunit' && (fswatch  -or ./ | xargs -n1 -I {} vendor/bin/phpunit -c .)"
+alias terminal-notifier="reattach-to-user-namespace terminal-notifier"
 
 if [[ `uname` -eq "Darwin" ]]; then
     alias docs="bash --login '/Applications/Docker/Docker Quickstart Terminal.app/Contents/Resources/Scripts/start.sh'"
@@ -45,11 +47,10 @@ alias vpnon='sudo openvpn /etc/openvpn/client.conf'
 ##
 # Fuzzy
 ##
-if [ -f ~/.fzf.zsh ];then
-   source ~/.fzf.zsh
-fi
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 ##
 # Other utility stuff
 ##
 source ~/dotfiles/functions/projects.zsh
+source ~/dotfiles/functions/scalapr.zsh
