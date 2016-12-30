@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: gettersetter
+# key: gs
+# --
+public function get${1:$(upcase-initials yas-text)}(): ${2:type}
+{
+    return $this->$1;
+}
+
+public function set${1:$(upcase-initials yas-text)}($2 \$$1)
+{
+    $this->$1 = \$$1;
+}

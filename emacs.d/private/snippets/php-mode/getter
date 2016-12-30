@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: getter
+# key: g
+# --
+public function get${1:$(upcase-initials yas-text)}(): ${2:type}
+{
+    return $this->$1;
+}
