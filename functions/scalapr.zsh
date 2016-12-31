@@ -1,7 +1,35 @@
 #!/bin/zsh
 
 usage() {
-  echo "scalapr PROJECTNAME"
+  cat <<EOF
+Usage:
+  scalapr PROJECTNAME
+
+This creates the directory structure for an empty scala project, adds a basic build.sbt including scalatest and initializes a git repo.
+E.g.
+
+$ scalapr foo
+
+creates
+
+foo
+  |
+  +- .git
+  +- src
+  |  |
+  |  +- main
+  |  |  |
+  |  |  +- scala
+  |  |     |
+  |  |     +- foo
+  |  +- test
+  |     |
+  |     +- scala
+  |        |
+  |        +- foo
+  +- build.sbt
+
+EOF
 }
 
 scalapr() {
@@ -19,4 +47,5 @@ scalaVersion := "2.12.1"
 libraryDependencies += "org.scalatest" % "scalatest_2.12" % "3.0.1" % "test"
 EOL
   cd $1
+  git init
 }
