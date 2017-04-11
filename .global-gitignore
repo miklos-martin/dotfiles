@@ -5,6 +5,8 @@
 .#*
 .ac-php-conf.json
 phpctags
+.*_history
+.ensime
 
 ##
 # copy from https://raw.githubusercontent.com/github/gitignore/master/Global/OSX.gitignore
