@@ -6,11 +6,8 @@ export SBT_OPTS="-Xmx2G -XX:+UseConcMarkSweepGC -XX:+CMSClassUnloadingEnabled -X
 export ANDROID_HOME=$HOME/lang/android
 export PYTHON_HOME=$HOME/Library/Python/3.5
 
-export PATH=$SCALA_HOME/bin:$SPARK_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PYTHON_HOME/bin:$HOME/.composer/vendor/bin:$HOME/bin:$PATH
+export PATH=$SCALA_HOME/bin:$SPARK_HOME/bin:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$PYTHON_HOME/bin:$HOME/.composer/vendor/bin:$HOME/bin:/usr/local/bin:$PATH
 
-export DOCKER_HOST=tcp://192.168.99.100:2376
-export DOCKER_CERT_PATH=/Users/martin.miklos/.docker/machine/machines/dinghy
-export DOCKER_TLS_VERIFY=1
-export DOCKER_MACHINE_NAME=dinghy
 
 export ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh-custom
+export PROJECTS_DIR=$HOME/projects

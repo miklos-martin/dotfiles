@@ -1,0 +1,6 @@
+[user]
+	name = Miklos Martin
+	email = miklos.martin@gmail.com
+[core]
+	editor = /usr/bin/vim
+	excludesfile = /Users/mmartin/dotfiles/.global-gitignore
