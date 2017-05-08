@@ -305,20 +305,22 @@ you should place you code here."
   (define-key evil-normal-state-map (kbd "M-s-¶") 'php-cs-fixer)
   (define-key evil-visual-state-map (kbd "M-s-¶") 'php-cs-fixer)
 
-  (define-key evil-normal-state-map (kbd "C-S-r") 'phpunit-current-test)
-  (define-key evil-normal-state-map (kbd "C-S-c") 'phpunit-current-class)
-  (define-key evil-normal-state-map (kbd "C-S-f") 'phpunit-current-project)
-  (define-key evil-insert-state-map (kbd "C-S-r") 'phpunit-current-test)
-  (define-key evil-insert-state-map (kbd "C-S-c") 'phpunit-current-class)
-  (define-key evil-insert-state-map (kbd "C-S-f") 'phpunit-current-project)
-
-  (add-hook 'javascript-mode-hook
+  (add-hook 'phpunit-mode-hook
     (lambda ()
-    (set (make-local-variable 'compile-command)
-      (concat "node "
-        (file-name-completion buffer-file-name)))))
+      (define-key evil-normal-state-map (kbd "C-S-r") 'phpunit-current-test)
+      (define-key evil-normal-state-map (kbd "C-S-c") 'phpunit-current-class)
+      (define-key evil-normal-state-map (kbd "C-S-f") 'phpunit-current-project)
+      (define-key evil-insert-state-map (kbd "C-S-r") 'phpunit-current-test)
+      (define-key evil-insert-state-map (kbd "C-S-c") 'phpunit-current-class)
+      (define-key evil-insert-state-map (kbd "C-S-f") 'phpunit-current-project)))
 
-
+  (add-hook 'js2-mode-hook
+    (lambda ()
+      (define-key evil-normal-state-map (kbd "C-S-c") 'compile)
+      (define-key evil-insert-state-map (kbd "C-S-c") 'compile)
+      (setq compilation-read-command nil)
+      (set (make-local-variable 'compile-command)
+           (concat "node " (buffer-file-name)))))
 
 
   (define-key evil-insert-state-map (kbd "s-r") 'replace-string)
