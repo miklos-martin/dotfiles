@@ -12,7 +12,7 @@ ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_AUTOCONNECT=false
 
-plugins=(fuzzy git docker jump tmux common-aliases)
+plugins=(fuzzy git docker jump tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -21,6 +21,7 @@ unsetopt correct_all
 ##
 # Aliases
 ##
+alias zshrc="$EDITOR ~/.zshrc"
 alias glg="git log --pretty=format:'%C(yellow)%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
 alias glgmy="glg --author=miklos"
 alias fuck='sudo $(fc -ln -1)'
@@ -32,6 +33,7 @@ alias REPLesent='scala -Dscala.color -language:_ -nowarn -i ~/.replesent/REPLese
 ##
 # Project aliases
 ##
+alias dots="cd ~/dotfiles"
 alias ss="p segmentation/segmentation-service"
 alias gcs="p segmentation/gcs-segmentation"
 alias es="p segmentation/event-segmentation-service"
