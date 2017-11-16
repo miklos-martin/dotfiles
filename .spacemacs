@@ -18,7 +18,7 @@ values."
    ;; of a list then all discovered layers will be installed.
    dotspacemacs-configuration-layers
    '(
-     typescript
+     haskell
      elixir
      csv
      clojure
@@ -51,6 +51,9 @@ values."
      yaml
      shell
      restclient
+
+     (typescript :variables
+                 typescript-fmt-on-save t)
 
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
@@ -271,6 +274,8 @@ you should place you code here."
   (global-set-key [f8] 'neotree-toggle)
   (setq neo-theme 'nerd)
 
+  (setq backup-directory-alist `(("." . "~/.emacs-saves")))
+
   (require 'ansi-color)
   (defun colorize-compilation-buffer ()
     (toggle-read-only)
@@ -327,7 +332,7 @@ you should place you code here."
   (define-key evil-normal-state-map (kbd "s-r") 'replace-string)
   (define-key evil-visual-state-map (kbd "s-r") 'replace-string)
 
-  (setq ns-use-srgb-colorspace t)
+  (setq ns-use-srgb-colorspace nil)
   (setq powerline-default-separator 'slant)
 
   (setq mac-option-key-is-meta t)
@@ -371,6 +376,9 @@ you should place you code here."
 
   (eval-after-load "sql"
     '(load-library "sql-indent"))
+
+  (setq tide-format-options '(:indentSize 2 :tabSize 2))
+  (setq typescript-indent-level 2)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -413,14 +421,14 @@ you should place you code here."
    (quote
     ("#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36" "#002b36")))
  '(magit-diff-use-overlays nil)
- '(org-agenda-files (quote ("~/.org/work.org")))
+ '(org-agenda-files nil)
  '(package-selected-packages
    (quote
     (tide typescript-mode ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot winum restclient-helm ob-restclient fuzzy company-restclient know-your-http-well elm-mode csv-mode erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks nginx-mode hide-comnt sql-indent php-refactor-mode uuidgen toc-org powerline pug-mode org org-plus-contrib org-bullets ob-http markdown-mode livid-mode skewer-mode simple-httpd link-hint json-snatcher json-reformat js2-mode intero flycheck hlint-refactor parent-mode projectile helm-hoogle request haml-mode gitignore-mode git-link flx eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit with-editor smartparens iedit evil-ediff anzu evil goto-chg undo-tree eshell-z sbt-mode scala-mode dumb-jump f diminish web-completion-data dash-functional tern pos-tip company-ghci ghc haskell-mode company-emacs-eclim eclim company column-enforce-mode clojure-snippets hydra inflections edn multiple-cursors paredit s peg eval-sexp-fu highlight cider seq spinner queue pkg-info clojure-mode epl bind-map bind-key yasnippet packed dash helm avy helm-core async auto-complete popup package-build android-mode restclient ac-php xpm php-mode php+-mode zenburn-theme yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle slim-mode shm shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox page-break-lines orgit open-junk-file noflet neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md ggtags flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help ensime emmet-mode emacs-eclim elisp-slime-nav drupal-mode define-word company-web company-tern company-statistics company-quickhelp company-ghc company-cabal coffee-mode cmm-mode clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
- '(term-default-bg-color "#002b36")
+ '(term-default-bg-color "#002b36" t)
  '(term-default-fg-color "#839496")
  '(vc-annotate-background-mode nil)
  '(weechat-color-list
