@@ -37,6 +37,8 @@ alias dots="cd ~/dotfiles"
 alias ss="p segmentation/segmentation-service"
 alias gcs="p segmentation/gcs-segmentation"
 alias es="p segmentation/event-segmentation-service"
+alias rds="p rds/relational-data-service"
+alias rdb="p rds/rds-db-router"
 
 ##
 # Fuzzy
@@ -48,3 +50,6 @@ alias es="p segmentation/event-segmentation-service"
 ##
 source ~/dotfiles/functions/projects.zsh
 source ~/dotfiles/functions/scalapr.zsh
+
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
