@@ -1,4 +1,9 @@
 ##
+# private keys
+##
+*.aes
+
+##
 # Editor/IDE stuff
 ##
 .idea/
@@ -7,7 +12,11 @@
 phpctags
 .*_history
 .ensime
+.ensime_cache
 *~
+.metals/
+.bloop/
+local.sbt
 
 ##
 # copy from https://raw.githubusercontent.com/github/gitignore/master/Global/OSX.gitignore
