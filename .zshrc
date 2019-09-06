@@ -1,3 +1,7 @@
+if type brew &>/dev/null; then
+  FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 ##
 # oh my zsh
 ##
@@ -23,7 +27,7 @@ unsetopt correct_all
 ##
 alias zshrc="$EDITOR ~/.zshrc"
 alias glg="git log --pretty=format:'%C(yellow)%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
-alias glgmy="glg --author=miklos"
+alias glgmy="glg --author='Miklos Martin'"
 alias fuck='sudo $(fc -ln -1)'
 alias html="lynx -stdin"
 alias json="jq -C '.' | less -R"
@@ -53,3 +57,8 @@ source ~/dotfiles/functions/scalapr.zsh
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# added by travis gem
+[ -f /Users/mmartin/.travis/travis.sh ] && source /Users/mmartin/.travis/travis.sh
+
+source ~/.nix-profile/etc/profile.d/nix.sh
