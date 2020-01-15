@@ -11,8 +11,12 @@ export PATH=$HOME/.local/bin:$HOME/.nix-profile/bin:$HOME/bin:$PYENV_ROOT/bin:/u
 
 export ZSH_CUSTOM=$HOME/dotfiles/oh-my-zsh-custom
 export PROJECTS_DIR=$HOME/projects
+export RD_TOOLBOX_DIR=$HOME/projects/rd-toolbox
 
 export GPG_TTY=$(tty)
 
+
+
 # heroku autocomplete setup
 HEROKU_AC_ZSH_SETUP_PATH=/Users/mmartin/Library/Caches/heroku/autocomplete/zsh_setup && test -f $HEROKU_AC_ZSH_SETUP_PATH && source $HEROKU_AC_ZSH_SETUP_PATH;
+
