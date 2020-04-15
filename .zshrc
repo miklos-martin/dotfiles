@@ -26,7 +26,7 @@ unsetopt correct_all
 # Aliases
 ##
 alias zshrc="$EDITOR ~/.zshrc"
-alias glg="git log --pretty=format:'%C(yellow)%ad %Cblue%an%Cgreen%d %Creset%s' --date=short"
+alias glg="git log --pretty=format:'%C(yellow)%ad %Cblue%an %Cgreen%h %Creset%s' --date=short"
 alias glgmy="glg --author='Miklos Martin'"
 alias fuck='sudo $(fc -ln -1)'
 alias html="lynx -stdin"
