@@ -62,3 +62,7 @@ source ~/dotfiles/functions/scalapr.zsh
 [ -f /Users/mmartin/.travis/travis.sh ] && source /Users/mmartin/.travis/travis.sh
 
 source ~/.nix-profile/etc/profile.d/nix.sh
+
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
