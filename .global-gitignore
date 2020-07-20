@@ -20,6 +20,8 @@ phpctags
 .metals/
 .bloop/
 local.sbt
+__pycache__/
+flycheck_*
 
 ##
 # copy from https://raw.githubusercontent.com/github/gitignore/master/Global/OSX.gitignore

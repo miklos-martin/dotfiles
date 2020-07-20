@@ -47,8 +47,10 @@ values."
      mscala
      java
      html
-     javascript
+     (javascript :variables
+                 node-add-modules-path t)
      php
+     python
      restclient
      haskell
      csv
@@ -492,17 +494,6 @@ you should place you code here."
       (define-key evil-insert-state-map (kbd "C-S-c") 'phpunit-current-class)
       (define-key evil-insert-state-map (kbd "C-S-f") 'phpunit-current-project)))
 
-  (add-hook 'js2-mode-hook
-    (lambda ()
-      (define-key evil-normal-state-map (kbd "C-S-c") 'compile)
-      (define-key evil-insert-state-map (kbd "C-S-c") 'compile)
-      (setq compilation-read-command nil)
-      (set (make-local-variable 'compile-command)
-           (concat "node " (buffer-file-name)))))
-
-  (setq prettier-js-command "prettier-eslint_d")
-  (add-hook 'js2-mode-hook 'prettier-js-mode)
-  (add-hook 'web-mode-hook 'prettier-js-mode)
 
   (add-hook 'shell-script-mode-hook
             (lambda ()
@@ -531,7 +522,6 @@ you should place you code here."
   (add-hook 'snippet-mode-hook 'disable-new-line)
 
   (define-key evil-insert-state-map (kbd "C-SPC") 'hippie-expand)
-
 
   (defun replace-last-capital () (interactive)
     (save-excursion
@@ -569,6 +559,30 @@ you should place you code here."
       (evil-ex-search-exit)))
 
   (add-hook 'mouse-leave-buffer-hook #'kill-minibuffer)
+
+  ;; (add-hook 'js2-mode-hook
+  ;;   (lambda ()
+  ;;     (define-key evil-normal-state-map (kbd "C-S-c") 'compile)
+  ;;     (define-key evil-insert-state-map (kbd "C-S-c") 'compile)
+  ;;     (setq compilation-read-command nil)
+  ;;     (set (make-local-variable 'compile-command)
+  ;;          (concat "node " (buffer-file-name)))))
+
+  (setq-default flycheck-disabled-checkers
+                (append flycheck-disabled-checkers
+                        '(javascript-jshint)))
+  (eval-after-load 'web-mode
+    '(progn
+       (add-hook 'web-mode-hook #'add-node-modules-path)))
+  (eval-after-load 'js2-mode
+    '(progn
+       (add-hook 'js2-mode-hook #'add-node-modules-path)))
+  (require 'prettier-js)
+  (setq prettier-js-command "prettier-eslint_d")
+  (setq prettier-js-args '("--semi" "false"
+                           ))
+  (add-hook 'js2-mode-hook 'prettier-js-mode)
+  (add-hook 'web-mode-hook 'prettier-js-mode)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -687,7 +701,7 @@ This function is called at the very end of Spacemacs initialization."
     ("/Users/mmartin/.org/anda/ricsimemo.org" "/Users/mmartin/.org/anda/15.demo.org" "/Users/mmartin/.org/anda/riskmemo.org" "/Users/mmartin/.org/anda/12.demo.org" "/Users/mmartin/.org/anda/17.grooming.org" "/Users/mmartin/.org/anda/18.demo.org" "/Users/mmartin/.org/anda/infixretro.org" "/Users/mmartin/.org/anda/SPS.org" "/Users/mmartin/.org/anda/docs.org" "/Users/mmartin/.org/anda/20.grooming.org" "/Users/mmartin/.org/anda/11.planning.org" "/Users/mmartin/.org/anda/10.implement.org" "/Users/mmartin/.org/anda/17.demo.org" "/Users/mmartin/.org/anda/10.planning.org" "/Users/mmartin/.org/anda/10.demo.org" "/Users/mmartin/.org/2018/smartcontent.flippers.org" "/Users/mmartin/.org/2018/wizz.org" "/Users/mmartin/.org/2018/01/01.08.org" "/Users/mmartin/.org/2018/01/01.09.org" "/Users/mmartin/.org/2018/01/01.23.org" "/Users/mmartin/.org/2018/01/01.22.org" "/Users/mmartin/.org/2018/01/01.19.org" "/Users/mmartin/.org/2018/01/01.31.org" "/Users/mmartin/.org/2018/01/01.24.org" "/Users/mmartin/.org/2018/01/01.18.org" "/Users/mmartin/.org/2018/01/01.15.org" "/Users/mmartin/.org/2018/01/01.23.retro.org" "/Users/mmartin/.org/2018/01/01.16.org" "/Users/mmartin/.org/2018/01/01.02.org" "/Users/mmartin/.org/2018/01/01.17.org" "/Users/mmartin/.org/2018/01/01.12.org" "/Users/mmartin/.org/2018/01/01.10.org" "/Users/mmartin/.org/2018/01/01.11.org" "/Users/mmartin/.org/2018/01/01.30.retro.org" "/Users/mmartin/.org/2018/appraisal.robi.org" "/Users/mmartin/.org/2018/02/02.01.org" "/Users/mmartin/.org/2018/02/failsafe.monitoring.org" "/Users/mmartin/.org/2018/02/02.20.retro.org" "/Users/mmartin/.org/2018/02/02.17.oncall.org" "/Users/mmartin/.org/2018/02/02.13.retro.org" "/Users/mmartin/.org/2018/02/02.26.org" "/Users/mmartin/.org/2018/02/02.19.org" "/Users/mmartin/.org/2018/02/02.27.retro.org" "/Users/mmartin/.org/2018/02/02.21.org" "/Users/mmartin/.org/2018/02/02.09.org" "/Users/mmartin/.org/2018/02/02.08.org" "/Users/mmartin/.org/2018/02/02.06.retro.org" "/Users/mmartin/.org/2018/02/02.22.org" "/Users/mmartin/.org/2018/02/02.23.org" "/Users/mmartin/.org/2018/03/03.23.org" "/Users/mmartin/.org/2018/03/03.22.org" "/Users/mmartin/.org/2018/03/03.20.org" "/Users/mmartin/.org/2018/03/03.21.org" "/Users/mmartin/.org/2018/03/03.13.retro.org" "/Users/mmartin/.org/2018/03/03.20.retro.org" "/Users/mmartin/.org/2018/03/03.06.retro.org" "/Users/mmartin/.org/2017/06/06.01.org" "/Users/mmartin/.org/2017/01/01.26.org" "/Users/mmartin/.org/2017/01/01.27.org" "/Users/mmartin/.org/2017/01/01.02.org" "/Users/mmartin/.org/2017/01/01.03.org" "/Users/mmartin/.org/2017/01/01.04.org" "/Users/mmartin/.org/2017/01/01.05.org" "/Users/mmartin/.org/2017/08/08.29.org" "/Users/mmartin/.org/2017/08/08.28.org" "/Users/mmartin/.org/2017/08/08.30.org" "/Users/mmartin/.org/2017/09/09.06.org" "/Users/mmartin/.org/2017/09/09.07.org" "/Users/mmartin/.org/2017/lambdaworld/flight.org" "/Users/mmartin/.org/2017/02/02.28.org" "/Users/mmartin/.org/2017/02/02.27.org" "/Users/mmartin/.org/2017/02/02.26.org" "/Users/mmartin/.org/2017/02/02.25.org" "/Users/mmartin/.org/2017/02/02.21.org" "/Users/mmartin/.org/2017/02/02.20.org" "/Users/mmartin/.org/2017/02/02.22.org" "/Users/mmartin/.org/2017/04/04.19.org" "/Users/mmartin/.org/2017/04/04.25.org" "/Users/mmartin/.org/2017/04/04.24.org" "/Users/mmartin/.org/2017/04/04.18.org" "/Users/mmartin/.org/2017/04/04.26.org" "/Users/mmartin/.org/2017/04/04.20.org" "/Users/mmartin/.org/2017/04/04.21.org" "/Users/mmartin/.org/todo.org" "/Users/mmartin/.org/emarsys/templateservice/process.org" "/Users/mmartin/.org/emarsys/templateservice/template.schema.org" "/Users/mmartin/.org/emarsys/bootcamp.demo.org" "/Users/mmartin/.org/emarsys/starterkit.org" "/Users/mmartin/.org/emarsys/mrd/1.planning.org" "/Users/mmartin/.org/lambdas/lambdas.org")))
  '(package-selected-packages
    (quote
-    (rjsx-mode go-guru go-eldoc company-go go-mode org-category-capture ghub let-alist org-mime rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby tide typescript-mode ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot winum restclient-helm ob-restclient fuzzy company-restclient know-your-http-well elm-mode csv-mode erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks nginx-mode hide-comnt sql-indent php-refactor-mode uuidgen toc-org powerline pug-mode org org-plus-contrib org-bullets ob-http markdown-mode livid-mode skewer-mode simple-httpd link-hint json-snatcher json-reformat js2-mode intero flycheck hlint-refactor parent-mode projectile helm-hoogle request haml-mode gitignore-mode git-link flx eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit with-editor smartparens iedit evil-ediff anzu evil goto-chg undo-tree eshell-z sbt-mode scala-mode dumb-jump f diminish web-completion-data dash-functional tern pos-tip company-ghci ghc haskell-mode company-emacs-eclim eclim company column-enforce-mode clojure-snippets hydra inflections edn multiple-cursors paredit s peg eval-sexp-fu highlight cider seq spinner queue pkg-info clojure-mode epl bind-map bind-key yasnippet packed dash helm avy helm-core async auto-complete popup package-build android-mode restclient ac-php xpm php-mode php+-mode zenburn-theme yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle slim-mode shm shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox page-break-lines orgit open-junk-file noflet neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md ggtags flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help ensime emmet-mode emacs-eclim elisp-slime-nav drupal-mode define-word company-web company-tern company-statistics company-quickhelp company-ghc company-cabal coffee-mode cmm-mode clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (add-node-modules-path go-guru go-eldoc company-go go-mode org-category-capture ghub let-alist org-mime rvm ruby-tools ruby-test-mode rubocop rspec-mode robe rbenv rake minitest chruby bundler inf-ruby tide typescript-mode ob-elixir flycheck-mix flycheck-credo alchemist elixir-mode org-projectile org-present org-pomodoro alert log4e gntp org-download htmlize gnuplot winum restclient-helm ob-restclient fuzzy company-restclient know-your-http-well elm-mode csv-mode erc-yt erc-view-log erc-terminal-notifier erc-social-graph erc-image erc-hl-nicks nginx-mode hide-comnt sql-indent php-refactor-mode uuidgen toc-org powerline pug-mode org org-plus-contrib org-bullets ob-http markdown-mode livid-mode skewer-mode simple-httpd link-hint json-snatcher json-reformat js2-mode intero flycheck hlint-refactor parent-mode projectile helm-hoogle request haml-mode gitignore-mode git-link flx eyebrowse evil-visual-mark-mode evil-unimpaired magit magit-popup git-commit with-editor smartparens iedit evil-ediff anzu evil goto-chg undo-tree eshell-z sbt-mode scala-mode dumb-jump f diminish web-completion-data dash-functional tern pos-tip company-ghci ghc haskell-mode company-emacs-eclim eclim company column-enforce-mode clojure-snippets hydra inflections edn multiple-cursors paredit s peg eval-sexp-fu highlight cider seq spinner queue pkg-info clojure-mode epl bind-map bind-key yasnippet packed dash helm avy helm-core async auto-complete popup package-build android-mode restclient ac-php xpm php-mode php+-mode zenburn-theme yaml-mode xterm-color ws-butler window-numbering which-key web-mode web-beautify volatile-highlights vi-tilde-fringe use-package tagedit spacemacs-theme spaceline solarized-theme smooth-scrolling smeargle slim-mode shm shell-pop scss-mode sass-mode restart-emacs rainbow-delimiters quelpa popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el paradox page-break-lines orgit open-junk-file noflet neotree multi-term move-text monokai-theme mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum linum-relative leuven-theme less-css-mode json-mode js2-refactor js-doc jade-mode info+ indent-guide ido-vertical-mode hungry-delete hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger gh-md ggtags flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eshell-prompt-extras esh-help ensime emmet-mode emacs-eclim elisp-slime-nav drupal-mode define-word company-web company-tern company-statistics company-quickhelp company-ghc company-cabal coffee-mode cmm-mode clj-refactor clean-aindent-mode cider-eval-sexp-fu buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(pos-tip-background-color "#073642")
  '(pos-tip-foreground-color "#93a1a1")
  '(smartrep-mode-line-active-bg (solarized-color-blend "#859900" "#073642" 0.2))
