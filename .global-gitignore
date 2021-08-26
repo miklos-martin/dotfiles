@@ -1,10 +1,12 @@
 /sandbox/
-/project/metals.sbt
+metals.sbt
+.bsp/
 
 ##
 # private keys
 ##
 *.aes
+account.json
 
 ##
 # Editor/IDE stuff
