@@ -63,7 +63,12 @@
     flycheck
     lsp-ui
     lsp-mode
+    lsp-metals
     company-lsp
+    yasnippet
+    posframe
+    dap-mode
+    lsp-treemacs
 ))
 
 
@@ -84,7 +89,9 @@
     (substitute-key-definition
      'minibuffer-complete-word
      'self-insert-command
-     minibuffer-local-completion-map)))
+     minibuffer-local-completion-map)
+    ;; sbt-supershell kills sbt-mode:  https://github.com/hvesalai/emacs-sbt-mode/issues/152
+    (setq sbt:program-options '("-Dsbt.supershell=false"))))
 
 (defun mscala/init-flycheck()
   (use-package flycheck
@@ -101,10 +108,10 @@
   (use-package lsp-mode
     :ensure t
     :defer t
-    :hook (scala-mode . lsp)
-    :commands lsp
+    ;; Optional - enable lsp-mode automatically in scala files
+    :hook  (scala-mode . lsp)
+    (lsp-mode . lsp-lens-mode)
     :config (setq lsp-prefer-flymake nil))
-
 
   (spacemacs/declare-prefix-for-mode 'scala-mode "mg" "goto")
   (spacemacs/declare-prefix-for-mode 'scala-mode "mf" "format")
@@ -127,5 +134,35 @@
     :ensure t
     :defer t))
 
+(defun mscala/init-lsp-metals()
+  (use-package lsp-ui
+    :ensure t
+    :defer t))
+
+(defun mscala/init-yasnippet()
+  (use-package lsp-ui
+    :ensure t
+    :defer t))
+
+(defun mscala/init-posframe()
+  (use-package posframe
+    :ensure t
+    :defer t))
+
+(defun mscala/init-dap-mode()
+  (use-package dap-mode
+    :ensure t
+    :defer t
+    :hook
+    (lsp-mode . dap-mode)
+    (lsp-mode . dap-ui-mode)))
+
+(defun mscala/init-lsp-treemacs()
+  (use-package lsp-treemacs
+    :ensure t
+    :defer t
+    :config
+    (lsp-metals-treeview-enable)
+    (setq lsp-metals-treeview-show-when-views-received t)))
 
 ;;; packages.el ends here
