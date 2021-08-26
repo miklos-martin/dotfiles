@@ -16,7 +16,7 @@ ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_AUTOQUIT=false
 ZSH_TMUX_AUTOCONNECT=false
 
-plugins=(fuzzy git docker jump tmux)
+plugins=(fzf git docker jump tmux terraform)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -33,38 +33,40 @@ alias html="lynx -stdin"
 alias json="jq -C '.' | less -R"
 alias terminal-notifier="reattach-to-user-namespace terminal-notifier"
 alias REPLesent='scala -Dscala.color -language:_ -nowarn -i ~/.replesent/REPLesent.scala'
+alias nix-shell="nix-shell --run /bin/zsh"
 
 ##
 # Project aliases
 ##
 alias dots="cd ~/dotfiles"
-alias ss="p segmentation/segmentation-service"
-alias gcs="p segmentation/gcs-segmentation"
-alias es="p segmentation/event-segmentation-service"
 alias rds="p rds/relational-data-service"
 alias rdb="p rds/rds-db-router"
 
 ##
-# Fuzzy
-##
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-##
 # Other utility stuff
 ##
+source ~/dotfiles/functions/safesource.zsh
 source ~/dotfiles/functions/projects.zsh
 source ~/dotfiles/functions/scalapr.zsh
+
+##
+# Fuzzy
+##
+ssource ~/.fzf.zsh
 
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # added by travis gem
-[ -f /Users/mmartin/.travis/travis.sh ] && source /Users/mmartin/.travis/travis.sh
+ssource /Users/mmartin/.travis/travis.sh
 
-source ~/.nix-profile/etc/profile.d/nix.sh
+ssource ~/.nix-profile/etc/profile.d/nix.sh
 
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
-source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+ssource "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+ssource "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
 
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 if which pyenv-virtualenv-init > /dev/null; then eval "$(pyenv virtualenv-init -)"; fi
+
+
+alias btlr="bin/run"
