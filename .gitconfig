@@ -1,6 +1,12 @@
-[user]
-	name = Miklos Martin
-	email = miklos.martin@gmail.com
 [core]
 	editor = /usr/bin/vim
 	excludesfile = /Users/mmartin/dotfiles/.global-gitignore
+	pager = less -F -X
+[user]
+	name = Miklos Martin
+	email = miklos.martin@gmail.com
+	signingkey = 6D0B722C369E9725
+[pull]
+	rebase = true
+[commit]
+	gpgsign = true
